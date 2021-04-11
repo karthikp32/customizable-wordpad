@@ -1,0 +1,12 @@
+{
+  "name": "CustomizableWordpad",
+  "displayName": "CustomizableWordpad",
+  "expo": {
+    "name": "CustomizableWordpad",
+    "slug": "CustomizableWordpad",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
