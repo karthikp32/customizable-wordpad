@@ -18,6 +18,7 @@ const App = () => {
       />
       <Stack.Screen name="Custom Keys" component={CustomKeysScreen} />
       <Stack.Screen name="Delete Previous Word" component={DeletePreviousWordScreen} />
+      <Stack.Screen name="Home Screen After Adding Custom Button" component={HomeScreenAfterAddingCustomButton} />
     </Stack.Navigator>
   </NavigationContainer>
   );
@@ -66,9 +67,46 @@ const DeletePreviousWordScreen = ({ navigation, route }) => {
     <View>
         <Text style={style.title}>SUMMARY OF DELETE PREVIOUS WORD: </Text>
         <Text style={style.paragraph}>Delete previous word before cursor.</Text>
+        <Button
+          title="Install Button"
+          color="#0040ff"
+          onPress={() =>
+            navigation.navigate('Home Screen After Adding Custom Button', {})
+          }
+          />
     </View>
     );
 }; 
+
+const HomeScreenAfterAddingCustomButton = ({ navigation }) => {
+  return (
+    <View>
+      <TextInput
+        style={{height: 700, width: 2000}}
+        placeholder="Start Typing!"
+        backgroundColor="white"
+        fontSize="36"
+        // onChangeText={text => setText(text)}
+        // defaultValue={text}
+      />
+      <Button
+      title="Delete Previous Word"
+      color="#0040ff"
+      onPress={() =>
+        {}
+      }
+      />
+      <Button
+      title="Add Custom Keys"
+      color="#0040ff"
+      onPress={() =>
+        navigation.navigate('Custom Keys', {})
+      }
+      />
+    </View>
+
+  );
+};
 
 const style = StyleSheet.create({
   container: {
