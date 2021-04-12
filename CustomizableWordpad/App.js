@@ -19,6 +19,7 @@ const App = () => {
       <Stack.Screen name="Custom Keys" component={CustomKeysScreen} />
       <Stack.Screen name="Delete Previous Word" component={DeletePreviousWordScreen} />
       <Stack.Screen name="Home Screen After Adding Custom Button" component={HomeScreenAfterAddingCustomButton} />
+      <Stack.Screen name="Home Screen After Deleting Previous Word" component={HomeScreenAfterDeletingPreviousWord} />
     </Stack.Navigator>
   </NavigationContainer>
   );
@@ -88,6 +89,7 @@ const DeletePreviousWordScreen = ({ navigation, route }) => {
 }; 
 
 const HomeScreenAfterAddingCustomButton = ({ navigation }) => {
+  const [text, setText] = useState('');
   return (
     <View>
       <TextInput
@@ -95,15 +97,44 @@ const HomeScreenAfterAddingCustomButton = ({ navigation }) => {
         placeholder="Start Typing!"
         backgroundColor="white"
         fontSize="36"
-        // onChangeText={text => setText(text)}
-        // defaultValue={text}
+        alignItems="center"
+        defaultValue={text}
       />
       <Button
       title="Delete Previous Word"
       color="#008200"
       onPress={() =>
-        {}
+        navigation.navigate('Home Screen After Deleting Previous Word', {})
       }
+      />
+      <Button
+      title="Add Custom Keys"
+      color="#0040ff"
+      onPress={() =>
+        navigation.navigate('Custom Keys', {})
+      }
+      />
+    </View>
+
+  );
+};
+
+const HomeScreenAfterDeletingPreviousWord = ({ navigation }) => {
+  const [text, setText] = useState('Hello my name is');
+  return (
+    <View>
+      <TextInput
+        style={{height: 700, width: 2000, fontSize: 36}}
+        placeholder="Start Typing!"
+        backgroundColor="white"
+        fontSize="36"
+        alignItems="center"
+        defaultValue={text}
+      />
+      <Button
+      title="Delete Previous Word"
+      color="#008200"
+      // onPress={}
       />
       <Button
       title="Add Custom Keys"
