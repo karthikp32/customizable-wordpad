@@ -25,15 +25,16 @@ const App = () => {
 };
 
 const HomeScreen = ({ navigation }) => {
+  const [text, setText] = useState('');
   return (
-    <View>
+    <View style={styles.paragraph}>
       <TextInput
-        style={{height: 700, width: 2000}}
-        placeholder="Start Typing!"
+        style={{height: 700, width: 2000, fontSize: 36}}
+        placeholder="Welcome to the Customizable Wordpad!"
         backgroundColor="white"
-        fontSize="36"
-        // onChangeText={text => setText(text)}
-        // defaultValue={text}
+        alignItems="center"
+        onChangeText={text => setText(text)}
+        defaultValue={text}
       />
       <Button
       title="Add Custom Keys"
@@ -50,7 +51,7 @@ const HomeScreen = ({ navigation }) => {
 const CustomKeysScreen = ({ navigation, route }) => {
   return (
     <View>
-        <Text style={style.title}>CUSTOM KEYS</Text>
+        <Text style={styles.title}>CUSTOM KEYS</Text>
     <Button
     title="Delete Previous Word"
     color="#0040ff"
@@ -65,11 +66,11 @@ const CustomKeysScreen = ({ navigation, route }) => {
 const DeletePreviousWordScreen = ({ navigation, route }) => {
   return (
     <View>
-        <Text style={style.title}>SUMMARY OF DELETE PREVIOUS WORD: </Text>
-        <Text style={style.paragraph}>Delete previous word before cursor.</Text>
+        <Text style={styles.title}>SUMMARY OF DELETE PREVIOUS WORD: </Text>
+        <Text style={styles.paragraph}>Delete previous word before cursor.</Text>
         <Button
-          title="Install Button"
-          color="#0040ff"
+          title="Install"
+          color="#008200"
           onPress={() =>
             navigation.navigate('Home Screen After Adding Custom Button', {})
           }
@@ -91,7 +92,7 @@ const HomeScreenAfterAddingCustomButton = ({ navigation }) => {
       />
       <Button
       title="Delete Previous Word"
-      color="#0040ff"
+      color="#00ff40"
       onPress={() =>
         {}
       }
@@ -108,7 +109,7 @@ const HomeScreenAfterAddingCustomButton = ({ navigation }) => {
   );
 };
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 36,
@@ -128,11 +129,11 @@ const style = StyleSheet.create({
   },
   paragraph: {
     color: "black",
-    textDecorationColor: "black",
-    textShadowColor: "black",
-    textShadowRadius: 1,
-    margin: 24,
-    fontSize: 36
+    // textDecorationColor: "black",
+    // textShadowColor: "black",
+    // textShadowRadius: 1,
+    margin: 12,
+    fontSize: 48
   },
   platformContainer: {
     marginTop: 8,
@@ -144,8 +145,10 @@ const style = StyleSheet.create({
   title: {
     fontWeight: "bold",
     marginVertical: 4,
-    fontSize: 48,
-    alignItems: "center"
+    fontSize: 64,
+    alignItems: "center",
+    padding: 50,
+    leftMargin: 50
   }
 });
 
