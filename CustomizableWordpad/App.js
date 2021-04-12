@@ -27,7 +27,7 @@ const App = () => {
 const HomeScreen = ({ navigation }) => {
   const [text, setText] = useState('');
   return (
-    <View style={styles.paragraph}>
+    <View style={styles.container}>
       <TextInput
         style={{height: 700, width: 2000, fontSize: 36}}
         placeholder="Welcome to the Customizable Wordpad!"
@@ -50,7 +50,7 @@ const HomeScreen = ({ navigation }) => {
 
 const CustomKeysScreen = ({ navigation, route }) => {
   return (
-    <View>
+    <View style={styles.container}>
         <Text style={styles.title}>CUSTOM KEYS</Text>
     <Button
     title="Delete Previous Word"
@@ -65,7 +65,7 @@ const CustomKeysScreen = ({ navigation, route }) => {
 
 const DeletePreviousWordScreen = ({ navigation, route }) => {
   return (
-    <View>
+    <View style={styles.container}>
         <Text style={styles.title}>SUMMARY OF DELETE PREVIOUS WORD: </Text>
         <Text style={styles.paragraph}>Delete previous word before cursor.</Text>
         <Button
@@ -81,7 +81,7 @@ const DeletePreviousWordScreen = ({ navigation, route }) => {
 
 const HomeScreenAfterAddingCustomButton = ({ navigation }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
         style={{height: 700, width: 2000}}
         placeholder="Start Typing!"
@@ -92,7 +92,7 @@ const HomeScreenAfterAddingCustomButton = ({ navigation }) => {
       />
       <Button
       title="Delete Previous Word"
-      color="#00ff40"
+      color="#008200"
       onPress={() =>
         {}
       }
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 36,
-    fontSize: 36
+    alignContent: "center",
   },
   input: {
     padding: 10,
