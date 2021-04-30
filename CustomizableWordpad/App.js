@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import {StyleSheet, Text, View, TextInput, Button, FlatList } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { HighlightWords} from './HighlightWords';
 
 const Stack = createStackNavigator();
 
