@@ -16,17 +16,17 @@ const App = () => {
         component={HomeScreen}
         options={{ title: 'Customizable Wordpad' }}
       />
-      <Stack.Screen name="Custom Keys" component={CustomKeysScreen} />
-      <Stack.Screen name="Delete Previous Word" component={DeletePreviousWordScreen} />
+      {/* <Stack.Screen name="Custom Keys" component={CustomKeysScreen} /> */}
+      {/* <Stack.Screen name="Delete Previous Word" component={DeletePreviousWordScreen} />
       <Stack.Screen name="Home Screen After Adding Custom Button" component={HomeScreenAfterAddingCustomButton} />
-      <Stack.Screen name="Home Screen After Deleting Previous Word" component={HomeScreenAfterDeletingPreviousWord} />
+      <Stack.Screen name="Home Screen After Deleting Previous Word" component={HomeScreenAfterDeletingPreviousWord} /> */}
     </Stack.Navigator>
   </NavigationContainer>
   );
 };
 
 const HomeScreen = ({ navigation }) => {
-  const [text, setText] = useState('');
+  const [word, setWord] = useState('');
   return (
     <View>
       <TextInput
@@ -34,119 +34,126 @@ const HomeScreen = ({ navigation }) => {
         placeholder="Welcome to the Customizable Wordpad!"
         backgroundColor="white"
         alignItems="center"
-        onChangeText={text => setText(text)}
-        defaultValue={text}
+        onChangeText={word => setWord(deletePreviousWord(word))}
+        defaultValue={word}
       />
-      <Button
+      {/* <Button
       title="Add Custom Keys"
       color="#0040ff"
       onPress={() =>
         navigation.navigate('Custom Keys', {})
       }
-      />
+      /> */}
     </View>
 
   );
 };
 
-const CustomKeysScreen = ({ navigation, route }) => {
-  return (
-    <View style={styles.container}>
-        <Text style={styles.title}>CUSTOM KEYS</Text>
-    <Button
-    title="Delete Previous Word"
-    color="#8000ff"
-    onPress={() =>
-      navigation.navigate('Delete Previous Word', {})
-    }
-    />
-    <Text>     </Text>
-        <Button
-    title="Delete Previous Sentence"
-    color="#8000ff"
-    onPress={() =>
-      navigation.navigate('Delete Previous Sentence', {})
-    }
-    />
-    </View>
-    );
-};
+function deletePreviousWord(word) {
+  console.log(word);
+  let modifiedWord = word.substring(0, word.lastIndexOf(" "));
+  return modifiedWord;
+}
 
-const DeletePreviousWordScreen = ({ navigation, route }) => {
-  return (
-    <View style={styles.container}>
-        <Text style={styles.title}>SUMMARY OF DELETE PREVIOUS WORD: </Text>
-        <Text style={styles.paragraph}>Delete previous word before cursor.</Text>
-        <Button
-          title="Install"
-          color="#008200"
-          onPress={() =>
-            navigation.navigate('Home Screen After Adding Custom Button', {})
-          }
-          />
-    </View>
-    );
-}; 
 
-const HomeScreenAfterAddingCustomButton = ({ navigation }) => {
-  const [text, setText] = useState('');
-  return (
-    <View>
-      <TextInput
-        style={{height: 700, width: 2000, fontSize: 36}}
-        placeholder="Start Typing!"
-        backgroundColor="white"
-        fontSize="36"
-        alignItems="center"
-        defaultValue={text}
-      />
-      <Button
-      title="Delete Previous Word"
-      color="#008200"
-      onPress={() =>
-        navigation.navigate('Home Screen After Deleting Previous Word', {})
-      }
-      />
-      <Button
-      title="Add Custom Keys"
-      color="#0040ff"
-      onPress={() =>
-        navigation.navigate('Custom Keys', {})
-      }
-      />
-    </View>
+// const CustomKeysScreen = ({ navigation, route }) => {
+//   return (
+//     <View style={styles.container}>
+//         <Text style={styles.title}>CUSTOM KEYS</Text>
+//     <Button
+//     title="Delete Previous Word"
+//     color="#8000ff"
+//     onPress={() =>
+//       navigation.navigate('Delete Previous Word', {})
+//     }
+//     />
+//     <Text>     </Text>
+//         <Button
+//     title="Delete Previous Sentence"
+//     color="#8000ff"
+//     onPress={() =>
+//       navigation.navigate('Delete Previous Sentence', {})
+//     }
+//     />
+//     </View>
+//     );
+// };
 
-  );
-};
+// const DeletePreviousWordScreen = ({ navigation, route }) => {
+//   return (
+//     <View style={styles.container}>
+//         <Text style={styles.title}>SUMMARY OF DELETE PREVIOUS WORD: </Text>
+//         <Text style={styles.paragraph}>Delete previous word before cursor.</Text>
+//         <Button
+//           title="Install"
+//           color="#008200"
+//           onPress={() =>
+//             navigation.navigate('Home Screen After Adding Custom Button', {})
+//           }
+//           />
+//     </View>
+//     );
+// }; 
 
-const HomeScreenAfterDeletingPreviousWord = ({ navigation }) => {
-  const [text, setText] = useState('Hello my name is');
-  return (
-    <View>
-      <TextInput
-        style={{height: 700, width: 2000, fontSize: 36}}
-        placeholder="Start Typing!"
-        backgroundColor="white"
-        fontSize="36"
-        alignItems="center"
-        defaultValue={text}
-      />
-      <Button
-      title="Delete Previous Word"
-      color="#008200"
-      // onPress={}
-      />
-      <Button
-      title="Add Custom Keys"
-      color="#0040ff"
-      onPress={() =>
-        navigation.navigate('Custom Keys', {})
-      }
-      />
-    </View>
+// const HomeScreenAfterAddingCustomButton = ({ navigation }) => {
+//   const [text, setText] = useState('');
+//   return (
+//     <View>
+//       <TextInput
+//         style={{height: 700, width: 2000, fontSize: 36}}
+//         placeholder="Start Typing!"
+//         backgroundColor="white"
+//         fontSize="36"
+//         alignItems="center"
+//         defaultValue={text}
+//       />
+//       <Button
+//       title="Delete Previous Word"
+//       color="#008200"
+//       onPress={() =>
+//         navigation.navigate('Home Screen After Deleting Previous Word', {})
+//       }
+//       />
+//       <Button
+//       title="Add Custom Keys"
+//       color="#0040ff"
+//       onPress={() =>
+//         navigation.navigate('Custom Keys', {})
+//       }
+//       />
+//     </View>
 
-  );
-};
+//   );
+// };
+
+// const HomeScreenAfterDeletingPreviousWord = ({ navigation }) => {
+//   const [text, setText] = useState('Hello my name is');
+//   return (
+//     <View>
+//       <TextInput
+//         style={{height: 700, width: 2000, fontSize: 36}}
+//         placeholder="Start Typing!"
+//         backgroundColor="white"
+//         fontSize="36"
+//         alignItems="center"
+//         defaultValue={text}
+//       />
+//       <Button
+//       title="Delete Previous Word"
+//       color="#008200"
+//       // onPress={}
+//       />
+//       <Button
+//       title="Add Custom Keys"
+//       color="#0040ff"
+//       onPress={() =>
+//         navigation.navigate('Custom Keys', {})
+//       }
+//       />
+//     </View>
+
+//   );
+// };
 
 const styles = StyleSheet.create({
   container: {
