@@ -7,14 +7,18 @@ import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 
 export default function DeletePreviousWordButton(props: any){
+
+  const pressHandler = () => {
+    console.log(props.locationOfCursor);
+    console.log(props.textInput);
+    DeletePreviousWord(props.locationOfCursor, props.textInput, props.setTextInput)
+    console.log(props.textInput);
+    }  
     
   return (
     <View>  
         <Button
-            onPress={() => {
-                console.log(props.locationOfCursor);
-                console.log(props.textInput);
-                DeletePreviousWord(props.locationOfCursor, props.textInput)}}
+            onPress={pressHandler}
             title="Delete Previous Word"
             color="#808080"
             accessibilityLabel="Learn more about this blue button"

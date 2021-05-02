@@ -32,8 +32,8 @@ export default function HomeScreen(props: any) {
     <View style={styles.container}>
       <Text style={styles.title}>Wordpad</Text>
       <TextInput style={styles.wordpad} multiline={true} 
-      onSelectionChange={(event) => {findIndexOfCursor(event)}}></TextInput>
-      <DeletePreviousWordButton locationOfCursor={indexOfCursor} textInput={textInputByUser}>
+      onSelectionChange={(event) => {findIndexOfCursor(event)}} onChangeText={text => setTextInputByUser(text)}></TextInput>
+      <DeletePreviousWordButton locationOfCursor={indexOfCursor} textInput={textInputByUser} setTextInput={setTextInputByUser}>
       </DeletePreviousWordButton>
       {/* <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="/screens/TabOneScreen.tsx" /> */}
