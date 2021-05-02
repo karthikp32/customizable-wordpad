@@ -73,6 +73,18 @@ export default function CustomKeys() {
             textStyle={{ fontFamily: "JosefinSans-Regular", textAlign: 'center', borderWidth: 5  }}
             onPress={(isChecked?: boolean) => {}}
           />
+          <View style={styles.update}>
+            <View style={{ flex: 1, alignSelf: 'stretch', backgroundColor: "#000"  }} />
+            <View style={{ flex: 1, alignSelf: 'stretch', backgroundColor: "#000"  }} >
+              <Button
+                onPress={updateCustomKeysInstalled}
+                title="Update Custom Keys"
+                color="#2f95dc"
+                accessibilityLabel="Learn more about this blue button"
+              />
+            </View>
+            <View style={{ flex: 1, alignSelf: 'stretch', backgroundColor: "#000"  }} />
+          </View>
         </View>
         <View style={{ flex: 3, alignSelf: 'stretch', backgroundColor: "#000"  }} >
           <BouncyCheckbox
@@ -129,6 +141,10 @@ export default function CustomKeys() {
   );
 }
 
+const updateCustomKeysInstalled = () => {
+
+}
+
 const showCustomKeyScreen = (pressEvent: any) => {
   console.log(pressEvent);
 }
@@ -154,4 +170,8 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
+  update: {
+    width: '50%',
+    height: '50%',
+  }
 });
