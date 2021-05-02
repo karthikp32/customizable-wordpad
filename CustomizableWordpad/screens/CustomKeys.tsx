@@ -79,7 +79,7 @@ export default function CustomKeys() {
               <Button
                 onPress={updateCustomKeysInstalled}
                 title="Update Custom Keys"
-                color="#2f95dc"
+                color="#808080"
                 accessibilityLabel="Learn more about this blue button"
               />
             </View>
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   update: {
-    width: '50%',
-    height: '50%',
+    width: '60%',
+    height: '60%',
   }
 });
