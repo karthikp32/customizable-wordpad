@@ -3,6 +3,7 @@ import { StyleSheet, Button } from 'react-native';
 import { TextInput } from 'react-native';
 import EditScreenInfo from '../components/EditScreenInfo';
 import DeletePreviousWordButton from '../components/DeletePreviousWordButton';
+import { DeletePreviousWord, FindPreviousWordIndices } from '../components/DeletePreviousWord';
 import { Text, View } from '../components/Themed';
 import {
   widthPercentageToDP as wp2dp,
@@ -26,18 +27,43 @@ export default function HomeScreen(props: any) {
     setTextInputByUser(localTextInputByUser);
     console.log(localTextInputByUser);
   }
+
+  const pressHandler = () => {
+    console.log(indexOfCursor);
+    console.log(textInputByUser);
+    // DeletePreviousWord(props.locationOfCursor, props.textInput, props.setTextInput)
+    let previousWordIndices = FindPreviousWordIndices(indexOfCursor, textInputByUser);
+    let previousWordSubstring = textInputByUser.substring(previousWordIndices.startIndex, previousWordIndices.endIndex+1);
+    setTextInputByUser(textInputByUser.replace(previousWordSubstring, ''));
+    // console.log(modifiedSentence);
+    console.log(textInputByUser);
+    }  
   
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Wordpad</Text>
-      <TextInput style={styles.wordpad} multiline={true} 
-      onSelectionChange={(event) => {findIndexOfCursor(event)}} onChangeText={text => setTextInputByUser(text)}></TextInput>
-      <DeletePreviousWordButton locationOfCursor={indexOfCursor} textInput={textInputByUser} setTextInput={setTextInputByUser}>
-      </DeletePreviousWordButton>
-      {/* <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" /> */}
+      <Text style={styles.title}>Editor</Text>
+      {/* <TextInput placeholder="Start typing..."
+      style={styles.wordpad} multiline={true} 
+      onSelectionChange={(event) => {findIndexOfCursor(event)}} onChangeText={text => setTextInputByUser(text)}></TextInput> */}
+      <TextInput placeholder="Start typing..."
+      style={styles.wordpad} multiline={true} 
+      onSelectionChange={(event) => {findIndexOfCursor(event)}}></TextInput>
+      {/* <DeletePreviousWordButton locationOfCursor={indexOfCursor} textInput={textInputByUser} setTextInput={setTextInputByUser}>
+      </DeletePreviousWordButton> */}
+      <View>  
+        <Button
+            onPress={pressHandler}
+            title="Delete Previous Word"
+            color="#808080"
+            accessibilityLabel="Learn more about this blue button"
+        />
+      </View>
+      <Text style={styles.title}>Display</Text>
+      <Text
+      style={styles.wordpad} >{textInputByUser}</Text>
     </View>
+    
   );
 }
 

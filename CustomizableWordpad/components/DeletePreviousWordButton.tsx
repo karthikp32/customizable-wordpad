@@ -1,7 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Button, Alert } from 'react-native';
-import { DeletePreviousWord } from './DeletePreviousWord';
+import { DeletePreviousWord, FindPreviousWordIndices } from './DeletePreviousWord';
 import Colors from '../constants/Colors';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
@@ -11,7 +11,11 @@ export default function DeletePreviousWordButton(props: any){
   const pressHandler = () => {
     console.log(props.locationOfCursor);
     console.log(props.textInput);
-    DeletePreviousWord(props.locationOfCursor, props.textInput, props.setTextInput)
+    // DeletePreviousWord(props.locationOfCursor, props.textInput, props.setTextInput)
+    let previousWordIndices = FindPreviousWordIndices(props.locationOfCursor, props.textInput);
+    let previousWordSubstring = props.textInput.substring(previousWordIndices.startIndex, previousWordIndices.endIndex+1);
+    props.setTextInput(props.textInput.replace(previousWordSubstring, ''));
+    // console.log(modifiedSentence);
     console.log(props.textInput);
     }  
     
