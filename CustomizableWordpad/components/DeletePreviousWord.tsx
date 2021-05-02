@@ -1,12 +1,11 @@
 import * as React from 'react';
-
-import { Text, TextProps } from './Themed';
+import { StyleSheet, Button } from 'react-native';
+import { View, Text, TextProps } from './Themed';
 
 const separatorString = "\n\t\r,. "
 
 export function DeletePreviousWord(currentIndex: number, sentence: string): string {
   let previousWordIndices = FindPreviousWordIndices(currentIndex, sentence);
-  // return sentence.replace(previousWord, '');
   let previousWordSubstring = sentence.substring(previousWordIndices.startIndex, previousWordIndices.endIndex+1);
   return sentence.replace(previousWordSubstring, '');
 }
