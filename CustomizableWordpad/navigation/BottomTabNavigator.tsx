@@ -10,9 +10,10 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import TabOneScreen from '../screens/HomeScreen';
+import TabTwoScreen from '../screens/CustomKeys';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import CustomKeys from '../screens/CustomKeys';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -21,17 +22,17 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="HomeScreen"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="TabOne"
+        name="HomeScreen"
         component={TabOneNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="CustomKeys"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
@@ -55,9 +56,9 @@ function TabOneNavigator() {
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
-        name="TabOneScreen"
+        name="HomeScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+        options={{ headerTitle: 'Customizable Wordpad' }}
       />
     </TabOneStack.Navigator>
   );
@@ -69,9 +70,9 @@ function TabTwoNavigator() {
   return (
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+        name="CustomKeys"
+        component={CustomKeys}
+        options={{ headerTitle: 'Customizable Wordpad' }}
       />
     </TabTwoStack.Navigator>
   );
