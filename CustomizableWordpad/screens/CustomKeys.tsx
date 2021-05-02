@@ -5,7 +5,7 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { Col, Row, Grid } from "react-native-easy-grid";
 
-export default function CustomKeys() {
+export default function CustomKeys(props: any) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Custom Keys</Text>
