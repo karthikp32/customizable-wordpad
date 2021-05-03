@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyleSheet, Button } from 'react-native';
 import { View, Text, TextProps } from './Themed';
 
-const separatorString = "\n\t\r,. "
+const separatorString = "\n\t\r,. ";
 
 export function DeletePreviousWord(currentIndex: number, sentence: string, setTextInput: any): string {
   console.log(currentIndex);

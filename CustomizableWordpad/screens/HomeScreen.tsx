@@ -4,6 +4,7 @@ import { TextInput } from 'react-native';
 import EditScreenInfo from '../components/EditScreenInfo';
 import DeletePreviousWordButton from '../components/DeletePreviousWordButton';
 import { DeletePreviousWord, FindPreviousWordIndices } from '../components/DeletePreviousWord';
+import {DeletePreviousSentence, FindPreviousSentenceIndices} from '../components/DeletePreviousSentence';
 import { Text, View } from '../components/Themed';
 import {
   widthPercentageToDP as wp2dp,
@@ -18,6 +19,12 @@ export default function HomeScreen(props: any) {
 
   const [indexOfCursor, setIndexOfCursor] = useState(0);
   const [textInputByUser, setTextInputByUser] = useState(" ");
+  const [previousWordIndices, setPreviousWordIndices] = useState({
+    selection: {
+        start: 0,
+        end: 0
+    }
+  });
 
   function findIndexOfCursor(event: any) {
     localIndexOfCursor = event.nativeEvent.selection;
@@ -28,18 +35,20 @@ export default function HomeScreen(props: any) {
     console.log(localTextInputByUser);
   }
 
-  const pressHandler = () => {
-    console.log(indexOfCursor);
-    console.log(textInputByUser);
-    // DeletePreviousWord(props.locationOfCursor, props.textInput, props.setTextInput)
-    let previousWordIndices = FindPreviousWordIndices(indexOfCursor, textInputByUser);
-    let previousWordSubstring = textInputByUser.substring(previousWordIndices.startIndex, previousWordIndices.endIndex+1);
-    setTextInputByUser(textInputByUser.replace(previousWordSubstring, ''));
-    // console.log(modifiedSentence);
-    console.log(textInputByUser);
+  const deletePreviousWordPressHandler = () => {
+    DeletePreviousWord(indexOfCursor, textInputByUser, setTextInputByUser);
     }  
-  
 
+  const deletePreviousSentencePressHandler = () => {
+    DeletePreviousSentence(indexOfCursor, textInputByUser, setTextInputByUser);
+  }  
+  
+  // const hopBackOneWordPressHandler = () => {
+  //   setPreviousWordIndices(FindPreviousWordIndices(indexOfCursor, textInputByUser));
+  //   const inputRef = React.createRef();
+  //   inputRef.setNativeProps({selection: previousWordIndices.selection});
+  //   }  
+   
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Editor</Text>
@@ -53,10 +62,18 @@ export default function HomeScreen(props: any) {
       </DeletePreviousWordButton> */}
       <View>  
         <Button
-            onPress={pressHandler}
+            onPress={deletePreviousWordPressHandler}
             title="Delete Previous Word"
             color="#808080"
-            accessibilityLabel="Learn more about this blue button"
+            accessibilityLabel="Learn more about thisgray button"
+        />
+      </View>
+      <View>  
+        <Button
+            onPress={deletePreviousSentencePressHandler}
+            title="Delete Previous Sentence"
+            color="#808080"
+            accessibilityLabel="Learn more about this gray button"
         />
       </View>
       <Text style={styles.title}>Display</Text>
