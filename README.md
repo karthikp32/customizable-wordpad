@@ -5,8 +5,7 @@ Purpose of this tool:
 
 How to use this tool:
 1. Please install NodeJS from https://nodejs.org/en/. I am currently using v14.15.4.
-2. Please install Expo CLI using the commands from https://docs.expo.io/workflow/expo-cli/.
-	a. npm install -g expo-cli. I am currently using 4.3.5.
+2. Please install Expo CLI using the command "npm install -g expo-cli" from https://docs.expo.io/workflow/expo-cli/. I am currently using 4.3.5.
 3. Clone this repo https://github.com/karthikp32/customizable-wordpad/tree/develop into your machine.
 4. Change directory into the CustomizableWordpad folder.
 5. Run the following command in your terminal: "npm start" and wait for a new tab in your browser to pop up.
