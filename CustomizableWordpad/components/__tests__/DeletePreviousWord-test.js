@@ -8,7 +8,8 @@ before the separator`, () => {
     const sentence = 'Hello, my name is ';
     const currentIndex = 9;
     const expectedResult = 'Hello, name is ';
-    const actualResult = DeletePreviousWord(currentIndex, sentence);
+    const setTextInput = () => {};
+    const actualResult = DeletePreviousWord(currentIndex, sentence, setTextInput);
     expect(actualResult).toBe(expectedResult);
 });
 
@@ -17,7 +18,8 @@ word`, () => {
     const sentence = 'Hello, my name is ';
     const currentIndex = 8;
     const expectedResult = 'Hello,  name is ';
-    const actualResult = DeletePreviousWord(currentIndex, sentence);
+    const setTextInput = () => {};
+    const actualResult = DeletePreviousWord(currentIndex, sentence, setTextInput);
     expect(actualResult).toBe(expectedResult);
 });
 

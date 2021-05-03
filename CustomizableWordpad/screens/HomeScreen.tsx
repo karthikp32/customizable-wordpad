@@ -6,6 +6,7 @@ import DeletePreviousWordButton from '../components/DeletePreviousWordButton';
 import { DeletePreviousWord, FindPreviousWordIndices } from '../components/DeletePreviousWord';
 import {DeletePreviousSentence, FindPreviousSentenceIndices} from '../components/DeletePreviousSentence';
 import { Text, View } from '../components/Themed';
+import {FindIndicesOfNextSentence, HighlightNextSentence} from '../components/HighlightNextSentence';
 import {
   widthPercentageToDP as wp2dp,
   heightPercentageToDP as hp2dp,
@@ -25,14 +26,15 @@ export default function HomeScreen(props: any) {
         end: 0
     }
   });
+  let indicesOfNextSentence = {startIndex: 0, endIndex: 0};
+  let isHighlightNextSentencePressed = false;
+  
 
   function findIndexOfCursor(event: any) {
     localIndexOfCursor = event.nativeEvent.selection;
-    console.log(localIndexOfCursor);
     setIndexOfCursor(localIndexOfCursor.start);
     let localTextInputByUser = event.nativeEvent.text;
     setTextInputByUser(localTextInputByUser);
-    console.log(localTextInputByUser);
   }
 
   const deletePreviousWordPressHandler = () => {
@@ -43,11 +45,33 @@ export default function HomeScreen(props: any) {
     DeletePreviousSentence(indexOfCursor, textInputByUser, setTextInputByUser);
   }  
   
+  const highlightNextSentencePressHandler = () => {
+    console.log('HERE!!!');
+    indicesOfNextSentence = FindIndicesOfNextSentence(indexOfCursor, textInputByUser);
+    console.log(indicesOfNextSentence);
+    isHighlightNextSentencePressed = true;
+    console.log(isHighlightNextSentencePressed);
+  }
   // const hopBackOneWordPressHandler = () => {
   //   setPreviousWordIndices(FindPreviousWordIndices(indexOfCursor, textInputByUser));
   //   const inputRef = React.createRef();
   //   inputRef.setNativeProps({selection: previousWordIndices.selection});
   //   }  
+
+  
+  const displayText = (isHighlightNextSentencePressed: boolean) => {
+    if(isHighlightNextSentencePressed) {
+      console.log(isHighlightNextSentencePressed);
+      HighlightNextSentence(indicesOfNextSentence, textInputByUser);
+      isHighlightNextSentencePressed = false;
+    }
+    else {
+      return (<Text
+        style={styles.wordpad}>{textInputByUser}</Text>);
+    }
+  }
+
+
    
   return (
     <View style={styles.container}>
@@ -76,9 +100,16 @@ export default function HomeScreen(props: any) {
             accessibilityLabel="Learn more about this gray button"
         />
       </View>
+      <View>  
+        <Button
+            onPress={highlightNextSentencePressHandler}
+            title="Highlight Next Sentence"
+            color="#808080"
+            accessibilityLabel="Learn more about this gray button"
+        />
+      </View>
       <Text style={styles.title}>Display</Text>
-      <Text
-      style={styles.wordpad} >{textInputByUser}</Text>
+      {displayText(isHighlightNextSentencePressed)}
     </View>
     
   );
@@ -108,4 +139,9 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
-});
+  highlightText:{
+    backgroundColor: 'yellow',
+    fontSize: 26,
+    textAlign: 'center'
+  }
+})
