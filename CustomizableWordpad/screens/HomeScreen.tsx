@@ -71,41 +71,49 @@ export default function HomeScreen(props: any) {
    
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Editor</Text>
-      {/* <TextInput placeholder="Start typing..."
-      style={styles.wordpad} multiline={true} 
-      onSelectionChange={(event) => {findIndexOfCursor(event)}} onChangeText={text => setTextInputByUser(text)}></TextInput> */}
-      <TextInput placeholder="Start typing..."
-      style={styles.wordpad} multiline={true} 
-      onSelectionChange={(event) => {findIndexOfCursor(event)}}></TextInput>
-      {/* <DeletePreviousWordButton locationOfCursor={indexOfCursor} textInput={textInputByUser} setTextInput={setTextInputByUser}>
-      </DeletePreviousWordButton> */}
-      <View>  
-        <Button
-            onPress={deletePreviousWordPressHandler}
-            title="Delete Previous Word"
-            color="#808080"
-            accessibilityLabel="Learn more about thisgray button"
-        />
+      <View style={styles.columns}>
+        <Text style={styles.title}>Editor</Text>
+        <TextInput placeholder="Start typing..."
+        style={styles.wordpad} multiline={true} 
+        onSelectionChange={(event) => {findIndexOfCursor(event)}}></TextInput>
       </View>
-      <View>  
-        <Button
-            onPress={deletePreviousSentencePressHandler}
-            title="Delete Previous Sentence"
-            color="#808080"
-            accessibilityLabel="Learn more about this gray button"
-        />
+      <View style={styles.columns}>
+        <Text style={styles.title}>Display</Text>
+        {displayText(isHighlightNextSentencePressed)}
       </View>
-      <View>  
-        <Button
-            onPress={highlightNextSentencePressHandler}
-            title="Highlight Next Sentence"
-            color="#808080"
-            accessibilityLabel="Learn more about this gray button"
-        />
+      <View style={styles.rows}>
+        <View>  
+          <Button
+              onPress={deletePreviousWordPressHandler}
+              title="Delete Previous Word"
+              color="#808080"
+              accessibilityLabel="Learn more about thisgray button"
+          />
+        </View>
+        <View>  
+          <Button
+              onPress={deletePreviousSentencePressHandler}
+              title="Delete Previous Sentence"
+              color="#808080"
+              accessibilityLabel="Learn more about this gray button"
+          />
+        </View>
+        <View>  
+          <Button
+              onPress={highlightNextSentencePressHandler}
+              title="Highlight Next Sentence"
+              color="#808080"
+              accessibilityLabel="Learn more about this gray button"
+          />
+        </View>
       </View>
-      <Text style={styles.title}>Display</Text>
-      {displayText(isHighlightNextSentencePressed)}
+      <View style={styles.rows}>
+
+      </View>
+      <View style={styles.rows}>
+      
+      </View>
+
     </View>
     
   );
@@ -119,8 +127,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   wordpad: {
-    width: '80%',
-    height: '80%',
+    width: '70%',
+    height: '40%',
     margin: 12,
     borderWidth: 1,
     color: 'black',
@@ -139,5 +147,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'yellow',
     fontSize: 26,
     textAlign: 'center'
+  },
+  columns:{ 
+    flex: 1, 
+    alignSelf: 'stretch', 
+    backgroundColor: "#000",
+    flexDirection: 'row'  
+  },
+  rows: {
+    flex: 1, 
+    alignSelf: 'stretch', 
+    backgroundColor: "#000",
+    flexDirection: 'column'  
   }
 })
