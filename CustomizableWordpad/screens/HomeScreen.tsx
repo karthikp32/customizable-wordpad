@@ -46,11 +46,8 @@ export default function HomeScreen(props: any) {
   }  
   
   const highlightNextSentencePressHandler = () => {
-    console.log('HERE!!!');
     indicesOfNextSentence = FindIndicesOfNextSentence(indexOfCursor, textInputByUser);
-    console.log(indicesOfNextSentence);
     isHighlightNextSentencePressed = true;
-    console.log(isHighlightNextSentencePressed);
   }
   // const hopBackOneWordPressHandler = () => {
   //   setPreviousWordIndices(FindPreviousWordIndices(indexOfCursor, textInputByUser));
@@ -61,7 +58,6 @@ export default function HomeScreen(props: any) {
   
   const displayText = (isHighlightNextSentencePressed: boolean) => {
     if(isHighlightNextSentencePressed) {
-      console.log(isHighlightNextSentencePressed);
       HighlightNextSentence(indicesOfNextSentence, textInputByUser);
       isHighlightNextSentencePressed = false;
     }

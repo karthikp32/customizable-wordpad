@@ -5,14 +5,10 @@ import { View, Text, TextProps } from './Themed';
 const separatorString = "\n\t\r,. ";
 
 export function DeletePreviousWord(currentIndex: number, sentence: string, setTextInput: any): string {
-  console.log(currentIndex);
-  console.log(sentence);
   let previousWordIndices = FindPreviousWordIndices(currentIndex, sentence);
   let previousWordSubstring = sentence.substring(previousWordIndices.startIndex, previousWordIndices.endIndex+1);
   sentence = sentence.replace(previousWordSubstring, '');
-  // console.log(modifiedSentence);
   setTextInput(sentence);
-  console.log(sentence);
   return sentence;
 }
 
