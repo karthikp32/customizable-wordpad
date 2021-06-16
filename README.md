@@ -1,7 +1,7 @@
 # customizable-wordpad
 
 Purpose of this tool:
-1) Improve efficiency of people who are forced to write essays and documents on their mobile device
+1) Improve the efficiency of low-income students who are forced to write essays and documents on their mobile devices
 
 How to use this tool:
 1. Please install NodeJS from https://nodejs.org/en/. I am currently using v14.15.4.
@@ -12,4 +12,3 @@ How to use this tool:
 6. Choose "Run in Web Browser" if you want to test the tool with the least amount of effort.
 7. Choose "Run in Android device/emulator" if you want to test with an Android device/emulator.
 8. Choose "Run in iOS simulator" if you want to test with an iOS simulator.
-
