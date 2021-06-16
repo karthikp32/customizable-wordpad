@@ -1,0 +1,4 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`given cursor is after a separator, deletePreviousWord() should delete the word 
+before the separator 1`] = `"Hello, my name is "`;
